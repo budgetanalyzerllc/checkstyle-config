@@ -67,6 +67,15 @@
     <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
         <module name="MatchXpath">
+            <property name="id" value="noDtoSuffix"/>
+            <property name="query"
+                      value="//CLASS_DEF/IDENT[ends-with(@text, 'DTO')]
+                           | //RECORD_DEF/IDENT[ends-with(@text, 'DTO')]
+                           | //INTERFACE_DEF/IDENT[ends-with(@text, 'DTO')]"/>
+            <message key="matchxpath.match"
+                     value="Type names should not use ''DTO'' suffix. Use domain names (e.g., CreateTransactionRequest, TransactionResponse)."/>
+        </module>
+        <module name="MatchXpath">
             <property name="id" value="singleLineCommentStartWithSpace"/>
             <property name="query"
                       value="//SINGLE_LINE_COMMENT[./COMMENT_CONTENT[not(starts-with(@text, ' '))
